@@ -9,10 +9,11 @@ class User {
     }
 
     //login method
-    login(){
+    async login(){
         const body = this.body;
-        const {userId,password} = UserModel.getUserInfo(body.userId);
-
+        // const {userId,password} = 
+        const {userId,password} = await UserModel.getUserInfo(body.userId);
+        console.log(userId,password);
         if(userId){
             //userId 가 있는게 전제입니다.
             if(userId === body.userId && password === body.password){
