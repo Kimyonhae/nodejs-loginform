@@ -20,10 +20,12 @@ const output = {
     },
 };
 
+
+//post method
 const process = {
-    login: (req,res) => {
+    login: async(req,res) => {
         const user = new User(req.body);
-        const data = user.login();
+        const data = await user.login();
         res.json(data);
     },
     register: (req,res) => {
