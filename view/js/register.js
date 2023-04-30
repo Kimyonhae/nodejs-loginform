@@ -8,6 +8,11 @@ const password = document.querySelector("#password");
 const passwordConfirm = document.querySelector("#passwordConfirm");
 const button = document.querySelector("#createBtn");
 async function registerEventBtn(){
+    //password 일치 확인
+    if(password !== passwordConfirm){
+        location.href = "/register";
+        return alert("비밀번호가 일치하지않습니다");
+    };
     const req = {
         userId : userId.value,
         userName :userName.value,
