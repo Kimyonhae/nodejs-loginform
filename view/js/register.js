@@ -9,7 +9,7 @@ const passwordConfirm = document.querySelector("#passwordConfirm");
 const button = document.querySelector("#createBtn");
 async function registerEventBtn(){
     //password 일치 확인
-    if(password !== passwordConfirm){
+    if(password.value !== passwordConfirm.value){
         location.href = "/register";
         return alert("비밀번호가 일치하지않습니다");
     };

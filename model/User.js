@@ -11,9 +11,8 @@ class User {
     //login method
     async login(){
         const body = this.body;
-        // const {userId,password} = 
         const {userId,password} = await UserModel.getUserInfo(body.userId);
-        console.log(userId,password);
+        console.log(userId,password); // 확인 log
         if(userId){
             //userId 가 있는게 전제입니다.
             if(userId === body.userId && password === body.password){
@@ -33,10 +32,16 @@ class User {
             msg : "존재하지 않는 ID 입니다.",
         }
     }
-    register(){
-        UserModel.save(this.body);
-        return {
-            success : true,
+    async register(){
+        const body = this.body;
+        try {
+            const response = await UserModel.save(body);
+            return response;
+        }catch(err){
+            return {
+                success : false,
+                msg : err.message,
+            };
         }
     }
 }
